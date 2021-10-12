@@ -1,112 +1,132 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+// In App.js in a new project
 
-import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import * as React from 'react';
+import { View, Text, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
+function HomeScreen({ navigation }) {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+      <Button
+	title="Go to Routes"
+	onPress={() => navigation.navigate('Routes')}
+      />
+      <Button
+        title="Go to Ascends"
+        onPress={() => navigation.navigate('Ascends')}
+      />
     </View>
   );
-};
+}
 
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
+function ListRoutesScreen({ navigation }) {
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text>List Routes Screen</Text>
+      <Button
+        title="Go to Home"
+        onPress={() => navigation.navigate('Home')}
+      />
+    </View>
   );
-};
+}
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+function AscendsScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text> Ascend Screen</Text>
+      <Button
+        title="Create Ascend"
+        onPress={() => navigation.navigate('Create Ascend')}
+      />
+      <Button
+        title="List Ascends"
+        onPress={() => navigation.navigate('ListAscends')}
+      />
+      <Button
+        title="Go to Home"
+        onPress={() => navigation.navigate('Home')}
+      />
+    </View>
+  );
+}
+
+function ListAscendsScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text> List all Ascends Screen</Text>
+      <Button
+        title="Go to Home"
+        onPress={() => navigation.navigate('Home')}
+      />
+    </View>
+  );
+}
+
+function CreateAscendScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text> Create Ascend Screen</Text>
+      <Button
+        title="Go to Home"
+        onPress={() => navigation.navigate('Home')}
+      />
+    </View>
+  );
+}
+
+
+function CreateRouteScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text>Create Route Screen</Text>
+      <Button
+        title="Go to Home"
+        onPress={() => navigation.navigate('Home')}
+      />
+    </View>
+  );
+}
+
+
+function RoutesScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Routes Screen</Text>
+      <Button
+        title="Create new Route"
+        onPress={() => navigation.navigate('CreateRoute')}
+      />
+      <Button
+        title="List all Routes"
+        onPress={() => navigation.navigate('ListRoutes')}
+      />
+      <Button
+        title="Go to Home"
+        onPress={() => navigation.navigate('Home')}
+      />
+    </View>
+  );
+}
+
+const Stack = createNativeStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Routes" component={RoutesScreen} />
+	<Stack.Screen name="Ascends" component={AscendsScreen} />
+	<Stack.Screen name="CreateAscend" component={CreateAscendScreen} />
+	<Stack.Screen name="ListAscends" component={ListAscendsScreen} />
+	<Stack.Screen name="CreateRoute" component={CreateRouteScreen} />
+	<Stack.Screen name="ListRoutes" component={ListRoutesScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 
 export default App;
