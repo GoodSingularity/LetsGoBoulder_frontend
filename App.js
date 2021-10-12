@@ -13,6 +13,10 @@ function HomeScreen({ navigation }) {
 	title="Go to Routes"
 	onPress={() => navigation.navigate('Routes')}
       />
+      <Button
+        title="Go to Ascends"
+        onPress={() => navigation.navigate('Ascends')}
+      />
     </View>
   );
 }
@@ -28,6 +32,51 @@ function ListRoutesScreen({ navigation }) {
     </View>
   );
 }
+
+function AscendsScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text> Ascend Screen</Text>
+      <Button
+        title="Create Ascend"
+        onPress={() => navigation.navigate('Create Ascend')}
+      />
+      <Button
+        title="List Ascends"
+        onPress={() => navigation.navigate('ListAscends')}
+      />
+      <Button
+        title="Go to Home"
+        onPress={() => navigation.navigate('Home')}
+      />
+    </View>
+  );
+}
+
+function ListAscendsScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text> List all Ascends Screen</Text>
+      <Button
+        title="Go to Home"
+        onPress={() => navigation.navigate('Home')}
+      />
+    </View>
+  );
+}
+
+function CreateAscendScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text> Create Ascend Screen</Text>
+      <Button
+        title="Go to Home"
+        onPress={() => navigation.navigate('Home')}
+      />
+    </View>
+  );
+}
+
 
 function CreateRouteScreen({ navigation }) {
   return (
@@ -70,6 +119,9 @@ function App() {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Routes" component={RoutesScreen} />
+	<Stack.Screen name="Ascends" component={AscendsScreen} />
+	<Stack.Screen name="CreateAscend" component={CreateAscendScreen} />
+	<Stack.Screen name="ListAscends" component={ListAscendsScreen} />
 	<Stack.Screen name="CreateRoute" component={CreateRouteScreen} />
 	<Stack.Screen name="ListRoutes" component={ListRoutesScreen} />
       </Stack.Navigator>
